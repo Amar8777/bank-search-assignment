@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Banks } from './banks';
 import { PagerService } from './services/index';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
