@@ -1,0 +1,70 @@
+.container {
+  padding-top: 50px;
+  padding-bottom: 10px;
+  color: #405065;
+}
+
+.search {
+  padding-bottom: 50px;
+  margin: auto;
+}
+
+.form-control::placeholder {
+  font-family: FontAwesome;
+}
+
+table,
+th,
+td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.margin-top {
+  margin-top: 40px;
+}
+
+.margin {
+  margin: 10px;
+}
+
+.margin-Bottom-20 {
+  margin-bottom: 20px;
+}
+
+.favourite-bank {
+  color: red;
+}
+
+.search_categories {
+  font-size: 13px;
+  padding: 10px 8px 10px 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search_categories .select {
+  width: 120%;
+  background: url('http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png') no-repeat;
+  background-position: 80% center;
+}
+
+.search_categories .select select {
+  background: transparent;
+  line-height: 1;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  font-size: 1em;
+}

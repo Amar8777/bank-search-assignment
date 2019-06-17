@@ -1,20 +1,78 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="margin-top" content="width=device-width, initial-scale=1">
+  <div class="margin-top container border">
+    <div class="text-center">
+      <div class="container">
+        <!-- header start -->
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+            <div class="md-form col-xs-4">
+              <div class="search_categories">
+                <div class="select">
+                  <select [(ngModel)]="selectedCity" (ngModelChange)="onChange($event)" name="search_categories"
+                    id="search_categories">
+                    <option *ngFor="let c of cities" [ngValue]="c"> {{c}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="md-form col-xs-6 margin-Bottom-20">
+              <input type="text"
+                placeholder="&#61442;  Start searching for a Bank by BankId,BankName,Branch,IFSC,City,District,State"
+                [(ngModel)]="searchText" class="form-control " id="search" mdbInput>
+            </div>
+          </div>
+        </div>
+        <!-- header end -->
+        <!-- table bank deatils table star -->
+        <table mdbTable class="z-depth-1 margin">
+          <thead>
+            <tr>
+              <th class="text-center">Bank Id</th>
+              <th class="text-center ">Bank Name</th>
+              <th class="text-center ">Branch</th>
+              <th class="text-center">IFSC</th>
+              <th class="text-center">City</th>
+              <th class="text-center">District</th>
+              <th class="text-center">State</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of pagedItems; let i = index" data-target="#exampleModal">
+              <td>{{item.bank_id}}</td>
+              <td
+                class="{{item.branch=='PIMPRI'||item.branch=='FORT'||item.branch=='KORAMANGALA'?'fa fa-star favourite-bank ':''}}">
+                {{item.bank_name}}</td>
+              <td>{{item.branch}}</td>
+              <td>{{item.ifsc}}</td>
+              <td>{{item.city}}</td>
+              <td>{{item.district}}</td>
+              <td>{{item.state}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- table bank deatils table end -->
+      <!-- pagination start -->
+      <ul *ngIf=" pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">First</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">Next</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)">Last</a>
+        </li>
+      </ul>
+      <!-- pagination end -->
+    </div>
 
+  </div>
+
+</div>
